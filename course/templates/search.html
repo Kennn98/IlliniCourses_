@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<!-- YOUR HTML FILE SHOULD START HERE>
+<!-- Link Necessary CSS files and JS files here -->
+<head>
+	<!-- THIS IS HOW YOU INCLUDE CSS FILE AND JAVASCRIPT FILE -->
+	<link rel="stylesheet" href="{%static 'course/css/search.css'%}">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" herf='#' onclick='jump()'>Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  <div class="navbar-nav">
+			<a class="nav-item nav-link active" href="/ranking">Ranking <span class="sr-only">(current)</span></a>
+		  </div>
+		</div>
+	</nav>
+
+	<!-- container that take all spaces -->
+	<div class="container d-flex h-100">
+		<div class="container justify-content-center align-self-center">
+			<h1 class = "display-4 text-center">Illini Courses</h1>
+			<div class="row justify-content-center">
+				<form class="form-inline">
+					<div class="form-group mx-sm-3 mb-2">
+						<label class="sr-only">CS411</label>
+						<input id="user_input" class="form-control" placeholder="CS411">
+					</div>
+					<button id="search_btn" class="btn btn-primary mb-1">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- LINK YOUR JAVASCRIPT HERE -->
+	<script src="{%static 'course/js/search.js'%}"></script>
+</body>
+<!-- YOUR HTML FILE SHOULD END HERE -->
+{% endblock %}

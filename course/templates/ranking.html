@@ -1,0 +1,98 @@
+{% load static %}
+{% block page_content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IlliniRanking</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{%static "/course/css/format.css"%}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{%static "/course/css/jquery.range.css"%}">
+	<script type="text/javascript" src="{%static "/course/js/jquery.range.js"%}"></script>
+	<link rel="stylesheet" href="{%static "/course/css/jquery.raty.css"%}">
+    <script type="text/javascript" src="{%static "/course/js/jquery.raty.js"%}"></script>
+	<script type="text/javascript" src="{%static "/course/js/Ranking.js"%}"></script>
+    <meta charset="UTF-8">
+	<script type="text/javascript" src="{%static "/course/js/paper-full.js"%}"></script>
+
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" herf='#' onclick='jump()'>Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  <div class="navbar-nav">
+			<a class="nav-item nav-link active" href="/ranking">Ranking <span class="sr-only">(current)</span></a>
+		  </div>
+		</div>
+	</nav>
+<div id='TitleBoard'>IlliniRanking</div>
+
+<div id='filter'>
+	<div id='subject'>
+		<h1 class='filtertitle'>Subject</h1>
+		<div class='maincheckboxs'>
+			<table class="table">
+				{% for value in data.default_subject_list %}
+				<tr><td><input type="checkbox" class='submit' id={{value}} name="SUB" value={{value}}><label for={{value}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{value}}</label><br></td></tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div id='middle'>
+		<div id='avgrating'>
+			<h1 class='filtertitle'>Rating</h1>
+			<hr>
+			<input type="hidden"  id="Ratinginput"/>
+
+		</div>
+		<div id='avgworkload'>
+			<h1 class='filtertitle'>Workload</h1>
+			<hr>
+			<input type="hidden"  id="workloadinput"/>
+
+		</div>
+	</div>
+	<div id='gened'>
+		<h1 class='filtertitle'>Gened</h1>
+		<div class='maincheckboxs'>
+			<table class="table">
+				<tr><td><input type="checkbox" class='submit' id="WCC" name="GE" value="WCC"><label for="WCC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Western/Comparative Culture</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="ACP" name="GE" value="ACP"><label for="ACP">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Advanced Composition</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="NW" name="GE" value="NW"><label for="NW">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non-Western Culture</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="US" name="GE" value="US"><label for="US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;US Minority Culture</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="HP" name="GE" value="HP"><label for="HP">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historical & Philosophical Perspectives</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="LA" name="GE" value="LA"><label for="LA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Literature & the Arts</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="LS" name="GE" value="LS"><label for="LS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Life Science</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="PS" name="GE" value="PS"><label for="PS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Science</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="QR1" name="GE" value="QR1"><label for="QR1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantitative Reasoning I</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="QR2" name="GE" value="QR2"><label for="QR2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantitative Reasoning II</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="SS" name="GE" value="SS"><label for="SS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Social Sciences</label><br></td></tr>
+				<tr><td><input type="checkbox" class='submit' id="BSC" name="GE" value="BSC"><label for="BSC">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Behavioral Sciences</label><br></td></tr>
+			</table>
+		</div>
+
+	</div>
+</div>
+<div id='Show'>
+	<table class="table">
+		<caption><td class='TT'>Subject</td><td class='TT'>Number</td><td class='TT'>Rating<svg width="1em" height="1em" class='rsort' viewBox="0 0 16 16" class="bi bi-arrow-down-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></td><td class='TT'>Workload<svg width="1em" height="1em" class='wsort' viewBox="0 0 16 16" class="bi bi-arrow-down-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></td></caption>
+		{% for key, value in data.items %}
+		<tr><td>{{ value.subject }}</td><td><a href="/courses/{{ value.subject }}{{ value.number }}">{{ value.number }}</a></td><td>{{ value.average_rating }}</td><td>{{ value.average_workload }}</td></tr>
+        {% endfor %}
+	</table>
+</div>
+<input type="botton" id='UP' onclick="UP()" class="btn btn-info" value="UP"> <input type="botton" id='DOWN' onclick="DOWN()" class="btn btn-info" value="DOWN">
+
+<div id='block'>
+
+</div>
+
+</body>
+</html>
+{% endblock %}

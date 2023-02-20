@@ -1,0 +1,173 @@
+#TitleBoard {
+	height: 250px;
+	color: white;
+	font-size: 120px;
+	padding-left: 30%;
+	line-height: 250%;
+	font-family: 'Anton', sans-serif;
+	width: 50%;
+	background-color: #FF6544;
+	float:left
+
+}
+
+#termGPA {
+	width: 75%;
+	height: 500px;
+	margin-left: 10%;
+	width: 40%;
+	float:left
+	
+}
+
+#proGPA {
+	height: 500px;
+	margin-right: 10%;
+	width: 40%;
+	float:left
+	
+}
+
+#chart {
+	margin-top: 50px;
+	height: 500px;
+}
+
+
+.subT {
+	font-size: 30px;
+	font-family: 'Exo 2', sans-serif;
+}
+
+#submit {
+	height: 400px;
+	width: 50%;
+	margin-left: 10%;
+	margin-top: 100px;
+}
+
+#wlnumi {
+	float:left;
+}
+
+#SUBB {
+	margin-top: 15px;
+}
+#DELB {
+	margin-top: 15px;
+	margin-left: 30px;
+}
+
+#WLS {
+	width: 50px;
+	padding-left: 20%;
+	padding-top: 10px;
+}
+
+#comment {
+	line-height: 500%;
+	width: 100%;
+	height: 250px;
+	padding-left: 60%;
+	top: 50px;
+}
+
+.ShowT {
+	font-size: 30px;
+	font-family: 'Exo 2', sans-serif;
+}
+
+#workloadshow {
+	padding-top: 50px;
+}
+
+
+.tagoff {
+    background-color: white;
+    float: left;
+    border:solid 2px gray;
+    margin-right: 50px;
+    width: auto;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    font-family: 'Anton', sans-serif;
+    height: auto;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 10px;
+}
+
+.tagon {
+    background-color: #2BC3F3;
+    float: left;
+    border:solid 2px gray;
+    margin-right: 50px;
+    width: auto;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    font-family: 'Anton', sans-serif;
+    height: auto;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 10px;
+}
+
+
+.box{
+    width:20%; margin:auto; padding:28px;
+    height:auto; border:1px #111 solid;
+    display:none;         
+}
+.box .show{display:block;} 
+.box .x{font-size:18px; text-align:right; display:block;}
+.box input{width:80%; font-size:18px; margin-top:0px;}
+
+.addtag {
+    margin-top:10px;
+}
+
+#fretaglist {
+	padding-left: 10%;
+	padding-right: 10%;
+	height: 150px
+}
+
+#rantaglist {
+	padding-left: 10%;
+	padding-right: 10%;
+	height: 150px
+}
+
+#addtaglist {
+	padding-left: 10%;
+	padding-right: 10%;
+	height: 150px
+}
+
+#addT {
+	margin-left: 90%;
+}
+
+#refresh {
+	margin-left: 90%;
+}
+
+.tagT {
+	width: 100%;
+	font-family: 'Exo 2', sans-serif;
+	text-align:center;
+	height: auto;
+	font-size: 30px;
+}
+
+.navbar-brand {
+	cursor: pointer;
+}

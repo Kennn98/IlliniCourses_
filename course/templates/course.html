@@ -1,0 +1,98 @@
+{% load static %}
+{% block page_content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Exo+2:wght@500&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{%static "/course/js/course.js"%}"></script>
+    <link rel="stylesheet" href="{%static "/course/css/course.css"%}">
+    <link rel="stylesheet" href="{%static "/course/css/jquery.range.css"%}">
+    <script type="text/javascript" src="{%static "/course/js/jquery.range.js"%}"></script>
+    <link rel="stylesheet" href="{%static "/course/css/star-rating.min.css"%}">
+    <script type="text/javascript" src="{%static "/course/js/star-rating.min.js"%}"></script>
+    <script src="{% static 'course/js/echarts.js' %}"></script>
+    <meta charset="UTF-8">
+    {% csrf_token %}
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" herf='#' onclick='jump()'>Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/ranking">Ranking <span class="sr-only">(current)</span></a>
+          </div>
+        </div>
+    </nav>
+<div id='TitleBoard'>{{subject_number}}</div>
+
+<div id='data'>
+    <input type="hidden" id="GPA_term" value='{{GPA_semester}}'>
+    <input type="hidden" id="semester_term" value='{{all_semester}}'>
+    <input type="hidden" id="name_ins" value='{{ all_instructor }}'>
+    <input type="hidden" id="GPA_ins" value='{{ GPA_instructor }}'>
+</div>
+
+<div id='comment'>
+    <label class='ShowT'>Rating:&nbsp;<input readonly='true' id='ratingstar' value={{average_rating}} class='rating' data-min='0' data-max='10' data-step='0.5' data-size='xl'></label>
+    <br>
+    <label class='ShowT' id='wlnumi'>Workload:&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" id="WLO" value='{{average_workload}}' format='false'/></label> <h1 id='WLS1'>{{average_workload}}</h1>
+</div>
+<hr>
+<div class='tagT'>The most popular tags for this course</div>
+<div id='fretaglist'>
+    {% for value in most_freq_tags %}
+    {% if value.selected == 0 %}
+    <div class='tag tagoff'>{{value.content}}</div>
+    {% else %}
+    <div class='tag tagon'>{{value.content}}</div>
+    {% endif %}
+    {% endfor %}
+</div>
+<div class='tagT'>Tags we choose for you</div>
+<div id='rantaglist'>
+    {% for value in rand_tags %}
+    {% if value.selected == 0 %}
+    <div class='tag tagoff'>{{value.content}}</div>
+    {% else %}
+    <div class='tag tagon'>{{value.content}}</div>
+    {% endif %}
+    {% endfor %}
+</div>
+<input type="button" id='refresh' value="CHANGE">
+<div class='tagT'>The tags you just added</div>
+<div id='addtaglist'></div>
+<input type="button" onClick="msgbox(1)" id='addT' value="ADD TAG">
+ <div id='inputbox' class="box">
+    <a class='x' href=''; onclick="msgbox(0); return false;">close</a>
+    <input type="text" id='text'>
+    <button type="button" class="btn btn-primary" onclick="msgbox(0); return false;" id='addtag'>ADD</button>
+ </div>
+<hr>
+<div id ='chart'>
+    <div id='termGPA'></div><div id='proGPA'></div>
+</div>
+
+<hr>
+<div id='submit'>
+    <label class="subT">Rating:&nbsp;&nbsp;&nbsp;&nbsp;<input id="Ratinginput" value="5" type="text" class="rating" data-min=0 data-max=10 data-step=1 data-size="xl" title=""></label>
+    <br>
+    <label class='subT' id='wlnumi'>Workload:&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id='workloadR' min="0" max="10" step="1" value="5"></label> <h1 id='WLS'>5</h1>
+    <br>
+    <button type="button" class="btn btn-primary" id='SUBB'>SUBMIT</button> <button type="button" class="btn btn-primary" id='DELB'>DELETE YOUR COMMENT</button>
+</div>
+
+
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
